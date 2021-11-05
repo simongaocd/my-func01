@@ -8,7 +8,7 @@ steps:
     name: "Build function 01"
     command: |
       cd ${OCI_WORKSPACE_DIR}/func01
-      docker build --pull --rm -t func01 -f Dockerfile .
+      docker build --pull --rm -t syd.ocir.io/ocichina001/funrepo/my-func01 -f Dockerfile .
 
     onFailure:
       - type: Command
@@ -22,4 +22,4 @@ steps:
 outputArtifacts:                  
   - name: output1           
     type: DOCKER_IMAGE       
-    location: func01:latest
+    location: syd.ocir.io/ocichina001/funrepo/my-func01:latest
