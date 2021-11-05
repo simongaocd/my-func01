@@ -9,8 +9,7 @@ steps:
     command: |
       cd ${OCI_WORKSPACE_DIR}/func01
       docker build --pull --rm -t syd.ocir.io/ocichina001/funrepo/my-func01 -f Dockerfile .
-      docker push syd.ocir.io/ocichina001/funrepo/my-func01:latest
-
+      
     onFailure:
       - type: Command
         command: |
