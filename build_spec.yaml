@@ -1,0 +1,25 @@
+version: 0.1             
+component: build
+timeoutInSeconds: 1000
+shell: bash           
+
+steps:
+  - type: Command
+    name: "Build function 01"
+    command: |
+      cd ${OCI_WORKSPACE_DIR}/func01
+      docker build --pull --rm -t func01 -f Dockerfile .
+
+    onFailure:
+      - type: Command
+        command: |
+          echo "Handling Failure for function"
+          echo "Failure successfully handled"
+        timeoutInSeconds: 40
+        runAs: root
+      
+
+outputArtifacts:                  
+  - name: output1           
+    type: DOCKER_IMAGE       
+    location: func01:latest
